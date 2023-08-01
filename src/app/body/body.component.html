@@ -1,0 +1,47 @@
+<h1>Noticas de curso</h1>
+<div>
+  <div class="row">
+    <div class="col-10">
+
+    </div>
+    <div class="col-2">
+      <div class="form-group">
+        <label for="categoria">Categoria</label>
+        <select name="" class="form-control" id="selectorNotice" (change)="eventoControl($event)">
+          <option *ngFor="let objeto of categorias" value="{{objeto.codigo}} ">{{objeto.texto}}</option>
+        </select>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row gap-3">
+  <div class="col-12 p-2">
+    <div *ngFor="let noticia of noticias">
+      <div *ngIf="noticia.categoria.codigo==1; else opcion2">
+        <div class="row">
+          <div class="col-4 p-2">
+            <img style="width: 300px;" src="{{ noticia.imagen }} " alt="">
+          </div>
+          <div class="col-8">
+            <h4> {{ noticia.titulo }} </h4>
+            <p> {{ noticia.texto }} </p>
+          </div>
+        </div>
+      </div>
+      <ng-template #opcion2>
+        <div class="row">
+          <div class="col-4 p-2">
+            <img style="width: 300px;" src="{{ noticia.imagen }} " alt="">
+          </div>
+          <div class="col-8">
+            <h6> {{ noticia.titulo }} </h6>
+            <p> {{ noticia.texto }} </p>
+          </div>
+        </div>
+      </ng-template>
+     
+    </div>
+  </div>
+</div>
